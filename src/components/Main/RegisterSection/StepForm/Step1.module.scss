@@ -1,0 +1,79 @@
+h3.formTitle {
+  display: flex;
+  flex: 0 0 100%;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+section.formBody {
+  .col {
+    justify-content: space-between;
+  }
+
+  .inputGroup {
+    margin-top: 24px;
+
+    .inputLabel {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--input-label);
+      margin-bottom: 8px;
+    }
+
+    .selectContainer {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        z-index: -2;
+        pointer-events: none;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: var(--select-arrow) transparent transparent transparent;
+        content: "";
+      }
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      font-weight: 400;
+      font-size: 12px;
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 16px;
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      background-color: transparent;
+    }
+
+    input {
+      color: var(--input-text);
+    }
+
+    select {
+      color: var(--select-true);
+      background-color: transparent;
+
+      &:required:invalid {
+        color: var(--select-false);
+      }
+
+      cursor: pointer;
+      -webkit-appearance: none;
+
+      option {
+        &[value=""][disabled] {
+          display: none;
+        }
+
+        color: var(--select-true);
+      }
+    }
+  }
+}
