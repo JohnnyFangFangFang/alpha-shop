@@ -90,3 +90,8 @@ section.formBody {
     }
   }
 }
+
+// 想先讓 step2 隱藏但無法作用
+form.step2 {
+  border: 3px solid red;
+}

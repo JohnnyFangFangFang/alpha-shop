@@ -28,20 +28,21 @@ function NextStep() {
   )
 }
 
+// 暫時先顯示 Step1 的畫面
 export default function ProgressControl() {
   return (
     <section className={`${styles.progressControlContainer} col col-lg-6 col-sm-12`}>
       <section className={`${styles.buttonGroup} col col-12`} data-phase="address">
         <NextStep />
       </section>
-      <section className={`${styles.buttonGroup} col col-12`} data-phase="shipping">
+      {/* <section className={`${styles.buttonGroup} col col-12`} data-phase="shipping">
         <PreviousStep />
         <NextStep />
       </section>
       <section className={`${styles.buttonGroup} col col-12`} data-phase="credit-card">
         <PreviousStep />
         <button className={styles.next}>確認下單</button>
-      </section>
+      </section> */}
     </section>
   )
 }

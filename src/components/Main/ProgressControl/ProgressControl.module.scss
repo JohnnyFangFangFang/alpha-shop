@@ -1,3 +1,6 @@
+// 不太清楚為何需要特地寫這行，若不寫會抓不到 base.scss 裡的變數
+$screen-break-point: 749.5px;
+
 %done-phase {
   .icon {
     display: inline-block;
@@ -190,6 +193,58 @@ $phase-map: (
             display: none;
           }
         }
+      }
+    }
+  }
+}
+
+section.progressControlContainer {
+  // border: 3px solid green;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: -100px;
+}
+
+@media screen and (max-width: $screen-break-point) {
+  section.progressContainer {
+    margin-top: 24px;
+
+    .progressGroup {
+      .progressIcon {
+        width: 32px;
+        height: 32px;
+        margin-right: 0px;
+
+        .text {
+          line-height: 32px;
+        }
+      }
+    }
+
+    .progressLabel {
+      display: none;
+    }
+  }
+
+  section.formContainer {
+    margin-top: 24px;
+  }
+
+  section.progressControlContainer {
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  section.buttonGroup {
+    button.next {
+      width: 156px;
+    }
+
+    &[data-phase='address'] {
+      button.next {
+        width: 100%;
       }
     }
   }

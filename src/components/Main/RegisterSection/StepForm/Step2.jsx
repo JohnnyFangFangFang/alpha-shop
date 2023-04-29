@@ -14,7 +14,7 @@ function ShippingType({ text, period }) {
 
 export default function Step2() {
   return (
-    <form className="col col-12" data-phase="shipping">
+    <form className={`${styles.step2} col col-12`} data-phase="shipping">
       <h3 className={styles.formTitle}>運送方式</h3>
       <section className={`${styles.formBody} col col-12`}>
         <label className={`${styles.radioGroup} col col-12`} data-price={0}>
