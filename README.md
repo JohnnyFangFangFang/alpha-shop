@@ -21,11 +21,11 @@ Finish the basic layout of Step1 in the register process.
 
 # Installation and Execution
 1. Please ensure that Node.js and npm are well installed in your local environment.
-2. Clone this project and run the command in Terminal:
+2. Find a folder where you want to put this project, open Terminal, and run the command for cloning:
 ```
 git clone https://github.com/JohnnyFangFangFang/alpha-shop.git
 ```
-3. Enter the directory and run the command:
+3. Then, you'll see a directory called "alpha-shop". Enter the directory and run the command (would take a while, be patient):
 ```
 npm install
 ```
@@ -37,5 +37,5 @@ npm start
 ```
 webpack compiled successfully
 ```
-6. Open your browser, type "http://localhost:3000", then enjoy the project, and that would be entertaining if you could enjoy this React practice, lol. If you did so, please let me know.
+6. Usually, your browser will run automatically and show the project. If it doesn't, please open your browser, type "http://localhost:3000", then enjoy the project. BTW, that would be entertaining if you could enjoy watching this React practice, lol. If you did so, please let me know.
 7. Press "ctrl + c" in Terminal if you want to stop running the project.
