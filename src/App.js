@@ -7,7 +7,8 @@ import Main from "./components/Main/Main.jsx";
 import RegisterSection from "./components/Main/RegisterSection/RegisterSection.jsx";
 // 如果想把 ProgressControl 放在 Main 就啟動
 import ProgressControl from "./components/Main/ProgressControl/ProgressControl.jsx";
-import Cart from "./components/Main/Cart/Cart.jsx";
+// Cart 之後再放
+// import Cart from "./components/Main/Cart/Cart.jsx";
 
 function App() {
   return (
