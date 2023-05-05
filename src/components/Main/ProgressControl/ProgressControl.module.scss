@@ -104,6 +104,7 @@ $phase-map: (
   2: 'shipping',
   3: 'credit-card'
 );
+
 @for $index from 1 to 4 {
   section.register-container[data-phase="#{$index}"] {
 
@@ -200,10 +201,11 @@ $phase-map: (
 
 section.progressControlContainer {
   // border: 3px solid green;
+  // grid-area: progressControl;
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: -100px;
+  bottom: 0px;
 }
 
 @media screen and (max-width: $screen-break-point) {

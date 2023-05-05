@@ -1,0 +1,154 @@
+// 不太清楚為何需要特地寫這行，若不寫會抓不到 base.scss 裡的變數
+$screen-break-point: 749.5px;
+
+.productContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 2px;
+  margin-bottom: 32px;
+
+  .imgContainer {
+    // border: 3px solid red;
+    width: 100px;
+    height: 100px;
+    margin-right: 21px;
+  }
+
+  .productInfo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    align-content: flex-start;
+
+    .productName {
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      max-width: 60%;
+      margin-right: auto;
+    }
+
+    .productControlContainer {
+      display: block;
+      width: 100%;
+      order: 1;
+    }
+
+    .productControl {
+      display: flex;
+      width: 116px;
+      margin-top: 18px;
+      margin-bottom: 17px;
+      justify-content: space-between;
+      align-items: center;
+
+      .productAction {
+        // border: 3px solid green;
+        display: inline-block;
+        width: 27px;
+        height: 26px;
+        cursor: pointer;
+      }
+
+      .productCount {
+        display: inline-block;
+      }
+    }
+
+    .price {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+    }
+  }
+}
+
+// .productList {
+//   .productContainer {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     margin-top: 2px;
+//     margin-bottom: 32px;
+
+//     .imgContainer {
+//       border: 3px solid red;
+//       width: 100px;
+//       height: 100px;
+//       margin-right: 21px;
+//     }
+
+//     .productInfo {
+//       display: flex;
+//       flex-wrap: wrap;
+//       flex-grow: 1;
+//       align-content: flex-start;
+
+//       .productName {
+//         font-size: 16px;
+//         line-height: 24px;
+//         font-weight: 400;
+//         max-width: 60%;
+//         margin-right: auto;
+//       }
+
+//       .productControlContainer {
+//         display: block;
+//         width: 100%;
+//         order: 1;
+//       }
+
+//       .productControl {
+//         display: flex;
+//         width: 116px;
+//         margin-top: 18px;
+//         margin-bottom: 17px;
+//         justify-content: space-between;
+//         align-items: center;
+
+//         .productAction {
+//           border: 3px solid orange;
+//           display: inline-block;
+//           width: 27px;
+//           height: 26px;
+//           cursor: pointer;
+//         }
+
+//         .productCount {
+//           display: inline-block;
+//         }
+//       }
+
+//       .price {
+//         font-size: 16px;
+//         line-height: 22px;
+//         font-weight: 700;
+//       }
+//     }
+//   }
+// }
+
+@media screen and (max-width: $screen-break-point) {
+  .productContainer {
+    .productInfo {
+      flex-direction: column;
+      align-items: flex-end;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .productName {
+        margin-right: unset;
+        max-width: unset;
+      }
+
+      .productControlContainer {
+        width: auto;
+        order: unset;
+
+        .productControl {
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}

@@ -4,57 +4,63 @@ $screen-break-point: 749.5px;
 
 // 還沒做到這先不動它
 @mixin input-width($prefix, $division) {
-    $form-full-width: 540;
+  $form-full-width: 540;
 
-    @for $index from 1 to ($division + 1) {
-        .#{$prefix}-#{$index} {
-            width: 100% * (($index * 65 + ($index - 1) * 30) / $form-full-width);
-        }
+  @for $index from 1 to ($division + 1) {
+    .#{$prefix}-#{$index} {
+      width: 100% * (($index * 65 + ($index - 1) * 30) / $form-full-width);
     }
+  }
 }
 
 // done
 main.siteMain {
-    margin-top: 80px;
-    padding-left: var(--site-edge-margin);
-    padding-right: var(--site-edge-margin);
-    background-color: inherit;
+  margin-top: 80px;
+  padding-left: var(--site-edge-margin);
+  padding-right: var(--site-edge-margin);
+  background-color: inherit;
 
-    .mainContainer {
-        display: flex;
-        position: relative;
-        max-width: 1100px;
-        margin: 0 auto;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+  .mainContainer {
+    // 本來想用 grid 做，發現在現有 HTML 架構不太好做，會影響其他樣式
+    display: flex;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-rows: 1fr 1fr 1fr;
+    // grid-template-areas:
+    //   'registerSection registerSection cart'
+    //   'progressControl progressControl cart';
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
 
 // 還沒做到這先不動它
 @media screen and (min-width: $screen-break-point) {
-    @include input-width('input-w-lg', 6);
+  @include input-width('input-w-lg', 6);
 }
 
 @media screen and (max-width: $screen-break-point) {
-    $mobile-form-full-width: 346;
+  $mobile-form-full-width: 346;
 
-    .input-w-sm-s1 {
-        width: 100% * 133 / $mobile-form-full-width;
-    }
+  .input-w-sm-s1 {
+    width: 100% * 133 / $mobile-form-full-width;
+  }
 
-    .input-w-sm-s2 {
-        width: 100% * 183 / $mobile-form-full-width;
-    }
+  .input-w-sm-s2 {
+    width: 100% * 183 / $mobile-form-full-width;
+  }
 
-    .input-w-sm-s3 {
-        width: 100% * 158 / $mobile-form-full-width;
-    }
+  .input-w-sm-s3 {
+    width: 100% * 158 / $mobile-form-full-width;
+  }
 
-    .input-w-sm-full {
-        width: 100%;
-    }
+  .input-w-sm-full {
+    width: 100%;
+  }
 
-    main.siteMain {
-        margin-top: 16px;
-    }
+  main.siteMain {
+    margin-top: 16px;
+  }
 }
