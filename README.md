@@ -7,7 +7,10 @@ The image below shows what it will look like.
 
 20230430 What I have done so far:  
 Finish the basic layout of Step1 in the register process.  
-![alpha-shop-step1](https://user-images.githubusercontent.com/121143837/235332392-7902c2d2-9105-498f-b22f-5c2f648e6117.png)
+![alpha-shop-step1](https://user-images.githubusercontent.com/121143837/235332392-7902c2d2-9105-498f-b22f-5c2f648e6117.png)  
+  
+20230506 Finish Cart layout  
+![Cart layout](https://user-images.githubusercontent.com/121143837/236591717-149e1db2-b2fd-4f81-acd0-4e3def89070b.png)
 
 
 # Features
