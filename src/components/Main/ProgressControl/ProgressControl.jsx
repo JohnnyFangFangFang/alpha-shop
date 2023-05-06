@@ -1,19 +1,20 @@
 import styles from "./ProgressControl.module.scss";
 import rightArrow from "assets/icons/right-arrow.svg";
-import leftArrow from "assets/icons/left-arrow.svg";
+// import leftArrow from "assets/icons/left-arrow.svg";
 
-function PreviousStep() {
-  return (
-    <button className={styles.prev}>
-      <img
-        className="cursorPoint"
-        src={leftArrow}
-        alt="left-arrow.svg"
-      />
-      上一步
-    </button>
-  )
-}
+// 目前還不會用到
+// function PreviousStep() {
+//   return (
+//     <button className={styles.prev}>
+//       <img
+//         className="cursorPoint"
+//         src={leftArrow}
+//         alt="left-arrow.svg"
+//       />
+//       上一步
+//     </button>
+//   )
+// }
 
 function NextStep() {
   return (

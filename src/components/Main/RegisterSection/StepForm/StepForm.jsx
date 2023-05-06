@@ -1,8 +1,8 @@
 import styles from "./StepForm.module.scss";
 
 import Step1 from "./Step1.jsx";
-import Step2 from "./Step2.jsx";
-import Step3 from "./Step3.jsx";
+// import Step2 from "./Step2.jsx";
+// import Step3 from "./Step3.jsx";
 
 // 先不顯示 Step2、Step3
 export default function StepsForm() {
