@@ -1,6 +1,6 @@
 import styles from "./ProgressControl.module.scss";
-import rightArrow from "icons/right-arrow.svg"; // 絕對路徑寫法
-import leftArrow from "../../../icons/left-arrow.svg";
+import rightArrow from "assets/icons/right-arrow.svg";
+import leftArrow from "assets/icons/left-arrow.svg";
 
 function PreviousStep() {
   return (

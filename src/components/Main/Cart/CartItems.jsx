@@ -1,8 +1,8 @@
 import styles from "./CartItems.module.scss";
 
 // 引入 svg、圖片
-import minus from "../../../icons/minus.svg";
-import plus from "../../../icons/plus.svg";
+import minus from "assets/icons/minus.svg";
+import plus from "assets/icons/plus.svg";
 
 // 測試用資料
 const cartItemsData = [
