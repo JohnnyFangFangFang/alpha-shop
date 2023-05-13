@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Main>
-        <RegisterSection />
+        <RegisterSection stepPhase={stepPhase} />
         <Cart />
         <ProgressControl handleClickNext={handleClickNext} handleClickPrevious={handleClickPrevious} stepPhase={stepPhase} />
       </Main>

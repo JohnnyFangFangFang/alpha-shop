@@ -1,42 +1,54 @@
 import styles from "./StepProgress.module.scss";
 import pgComplete from "assets/icons/pg-complete.svg";
 
-function StepNotice({ dataPhase, text, label }) {
+// 步驟數字與名稱
+// 因為要讓 styles 能接收變數，所以用「[]」取值而非「.」
+function StepProgressNotice({ dataPhase, imgDisplay, textClass, text, labelClass, label }) {
   return (
     <span className={styles.progressGroup} dataPhase={dataPhase}>
       <span className={styles.progressIcon}>
-        <span className={styles.text}>{text}</span>
-        <img className={`${styles.icon} cursorPoint`} src={pgComplete} alt="pg-complete.svg" />
+        {imgDisplay ? <img className={`${styles.icon} cursorPoint`} src={pgComplete} alt="pg-complete.svg" /> : <span className={styles[textClass]}>{text}</span>}
       </span>
-      <span className={styles.progressLabel}>{label}</span>
+      <span className={styles[labelClass]}>{label}</span>
     </span>
   )
 }
 
-// 暫時先顯示靜態版面，以 Step1 為主
-export default function StepProgress() {
+// 步驟橫條
+function StepProgressBar({ dataOrder, progressBarClass }) {
+  return (
+    <span className={styles[progressBarClass]} data-order={dataOrder} />
+  )
+}
+
+// 要再優化，程式碼應該要更簡潔
+// 因為不是很懂原本寫好的 SCSS，這邊先照我的方式寫
+export default function StepProgress({ stepPhase }) {
   return (
     <section className={`${styles.progressContainer} col col-12`}>
-      <StepNotice dataPhase='address' text='' label='寄送地址' />
-      <span className={styles.progressBar} data-order={1} />
+      {stepPhase === 1 && <>
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='address' imgDisplay={false} textClass='textBgcBlack' text='1' labelClass='progressLabel' label='寄送地址' />
+        <StepProgressBar dataOrder={1} progressBarClass='progressBar' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='shipping' imgDisplay={false} textClass='textUndone' text='2' labelClass='labelUndone' label='運送方式' />
+        <StepProgressBar dataOrder={2} progressBarClass='progressBarUndone' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='credit-card' imgDisplay={false} textClass='textUndone' text='3' labelClass='labelUndone' label='付款資訊' />
+      </>}
 
-      {/* <StepNotice dataPhase='shipping' text='2' label='運送方式' /> */}
-      <span className={styles.progressGroup} data-phase='shipping'>
-        <span className={styles.progressIcon}>
-          <span className={styles.text}>2</span>
-        </span>
-        <span className={styles.progressLabel}>運送方式</span>
-      </span>
+      {stepPhase === 2 && <>
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='address' imgDisplay={true} textClass='textBgcBlack' text='1' labelClass='progressLabel' label='寄送地址' />
+        <StepProgressBar dataOrder={1} progressBarClass='progressBar' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='shipping' imgDisplay={false} textClass='text' text='2' labelClass='progressLabel' label='運送方式' />
+        <StepProgressBar dataOrder={2} progressBarClass='progressBar' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='credit-card' imgDisplay={false} textClass='textUndone' text='3' labelClass='labelUndone' label='付款資訊' />
+      </>}
 
-      <span className={styles.progressBar} data-order={2} />
-      
-      {/* <StepNotice dataPhase='credit-card' text='3' label='付款資訊' /> */}
-      <span className={styles.progressGroup} data-phase='credit-card'>
-        <span className={styles.progressIcon}>
-          <span className={styles.text}>3</span>
-        </span>
-        <span className={styles.progressLabel}>付款資訊</span>
-      </span>
+      {stepPhase === 3 && <>
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='address' imgDisplay={true} textClass='textBgcBlack' text='1' labelClass='progressLabel' label='寄送地址' />
+        <StepProgressBar dataOrder={1} progressBarClass='progressBar' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='shipping' imgDisplay={true} textClass='text' text='2' labelClass='progressLabel' label='運送方式' />
+        <StepProgressBar dataOrder={2} progressBarClass='progressBar' />
+        <StepProgressNotice stepPhase={stepPhase} dataPhase='credit-card' imgDisplay={false} textClass='text' text='3' labelClass='progressLabel' label='付款資訊' />
+      </>}
     </section>
   )
 }

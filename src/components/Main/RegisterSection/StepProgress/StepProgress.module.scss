@@ -68,6 +68,18 @@ section.progressContainer {
     border-style: solid;
   }
 
+  // progressBar 的 undone 樣式
+  .progressBarUndone {
+    display: flex;
+    flex-grow: 1;
+    max-width: 60px;
+    height: 1px;
+    margin: 0px 8px;
+    border-width: 2px;
+    border-style: solid;
+    color: var(--progress-undone-color);
+  }
+
   .progressGroup {
     display: flex;
 
@@ -79,6 +91,7 @@ section.progressContainer {
       margin-right: 8px;
       border-radius: 50%;
 
+      // 正常
       .text {
         width: inherit;
         height: inherit;
@@ -89,9 +102,40 @@ section.progressContainer {
         line-height: 24px;
         text-align: center;
         color: inherit;
-        // 暫時多加的，為了顯示圓圈
+        // 顯示圓圈
         border: 1px solid black;
         border-radius: 50%;
+      }
+
+      // 黑底白字
+      .textBgcBlack {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        color: white;
+        background-color: black;
+        border-radius: 50%;
+      }
+
+      // text 的 undone 樣式
+      .textUndone {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        top: 0px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: center;
+        // 外框顏色另外改
+        border: 1px solid var(--progress-undone-color);
+        border-radius: 50%;
+        @extend %undone-text;
       }
 
       .icon {
@@ -105,6 +149,13 @@ section.progressContainer {
       line-height: 24px;
       color: var(--main-text);
     }
+
+    // label 的 undone 樣式
+    .labelUndone {
+      font-weight: 400;
+      line-height: 24px;
+      @extend %undone-text;
+    }
   }
 }
 
@@ -114,6 +165,7 @@ $phase-map: (
   3: 'credit-card'
 );
 
+// 目前不是很懂這串 SCSS 寫法，先不用
 @for $index from 1 to 4 {
   section.registerContainer[data-phase="#{$index}"] {
 
