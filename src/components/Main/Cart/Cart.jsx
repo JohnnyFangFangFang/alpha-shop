@@ -27,8 +27,8 @@ const cartItemsDataForCal = cartItemsData.map(cartItemData => {
 })
 
 
-// 目前先做兩個 item 的計算邏輯，之後要想如何優化
-// 本單元題目尚未提及運費邏輯，故先以 0 計算
+// 目前先做兩個 item 的計算邏輯，之後再想如何優化
+// 本單元題目尚未處理運費邏輯，故先以 0 計算
 export default function Cart() {
 
   const [_quantity1, setQuantity1] = useState(cartItemsDataForCal[0].quantity)
@@ -59,6 +59,7 @@ export default function Cart() {
     }
   }
 
+  // 商品數量不能有負數
   function handleDecreaseItem2Click() {
     if (cartItemsDataForCal[1].quantity > 0) {
       setQuantity2(

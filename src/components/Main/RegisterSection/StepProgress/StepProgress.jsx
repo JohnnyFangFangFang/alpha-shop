@@ -34,7 +34,7 @@ function StepProgressLayout({ imgDisplay1, imgDisplay2, imgDisplay3, textClass1,
   )
 }
 
-// 因為不是很懂原本寫好的 SCSS，這邊先照我的方式寫
+// 因為不是很懂原本寫好的 SCSS，這邊先照我的方式練習 React
 // 要再優化，程式碼應該要更簡潔
 export default function StepProgress({ stepPhase }) {
   return (
