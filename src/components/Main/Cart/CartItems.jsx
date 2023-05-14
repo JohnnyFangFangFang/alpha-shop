@@ -19,7 +19,10 @@ function CartItem({ id, name, img, price, quantity, increase1, increase2, decrea
           alt="cart item img"
         />
         <div className={styles.productInfo}>
-          <div className={styles.productName}>{name}</div>
+          <div className={styles.productNameAndPriceContainer}>
+            <div className={styles.productName}>{name}</div>
+            <div className={styles.price} >${new Intl.NumberFormat().format(price)}</div>
+          </div>
           <div className={styles.productControlContainer}>
             <div className={styles.productControl}>
               <img onClick={id === '1' ? decrease1 : decrease2}
@@ -34,8 +37,8 @@ function CartItem({ id, name, img, price, quantity, increase1, increase2, decrea
                 alt="plus.svg"
               />
             </div>
+            <div className={styles.price} >共：${new Intl.NumberFormat().format(price * quantity)}</div>
           </div>
-          <div className={styles.price} >{price * quantity}</div>
         </div>
       </div>
     )

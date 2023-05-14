@@ -31,8 +31,8 @@ const cartItemsDataForCal = cartItemsData.map(cartItemData => {
 // 本單元題目尚未提及運費邏輯，故先以 0 計算
 export default function Cart() {
 
-  const [quantity1, setQuantity1] = useState(cartItemsDataForCal[0].quantity)
-  const [quantity2, setQuantity2] = useState(cartItemsDataForCal[1].quantity)
+  const [_quantity1, setQuantity1] = useState(cartItemsDataForCal[0].quantity)
+  const [_quantity2, setQuantity2] = useState(cartItemsDataForCal[1].quantity)
 
   const totalPrice = cartItemsDataForCal[0].quantity * cartItemsDataForCal[0].price + cartItemsDataForCal[1].quantity * cartItemsDataForCal[1].price
   const deliveryFee = 0
@@ -67,8 +67,6 @@ export default function Cart() {
     }
   }
 
-  console.log(cartItemsDataForCal)
-
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
       <h3 className={styles.cartTitle}>購物籃</h3>
@@ -77,11 +75,11 @@ export default function Cart() {
       </section>
       <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>
-        <div className={styles.price} >{deliveryFee}</div>
+        <div className={styles.price} >${new Intl.NumberFormat().format(deliveryFee)}</div>
       </section>
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price} >{totalPrice + deliveryFee}</div>
+        <div className={styles.price} >${new Intl.NumberFormat().format(totalPrice + deliveryFee)}</div>
       </section>
     </section>
   )
