@@ -5,12 +5,16 @@ There will be a series of homeworks from this topic, so I'll keep updating throu
 The image below shows what it will look like.  
 ![preview-1](https://user-images.githubusercontent.com/121143837/235332361-33b2e1d5-f968-4e35-a792-5cfa4ff68728.png)
 
-20230430 What I have done so far:  
-Finish the basic layout of Step1 in the register process.  
+What I have done so far:  
+
+20230430 Finish the basic layout of Step1 in the register process.  
 ![alpha-shop-step1](https://user-images.githubusercontent.com/121143837/235332392-7902c2d2-9105-498f-b22f-5c2f648e6117.png)  
   
 20230506 Finish Cart layout  
-![Cart layout](https://user-images.githubusercontent.com/121143837/236591717-149e1db2-b2fd-4f81-acd0-4e3def89070b.png)
+![Cart layout](https://user-images.githubusercontent.com/121143837/236591717-149e1db2-b2fd-4f81-acd0-4e3def89070b.png)  
+
+20230514 Finish Step transition logic (You can hardly tell the difference by this screenshot, plz kindly check the code :) )  
+![20230514 Step transition logic](https://github.com/JohnnyFangFangFang/alpha-shop/assets/121143837/f91dd411-67f9-4949-8518-6bc780884918)
 
 
 # Features
