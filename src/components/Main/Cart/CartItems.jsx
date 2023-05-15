@@ -4,8 +4,8 @@ import styles from "./CartItems.module.scss";
 import minus from "assets/icons/minus.svg";
 import plus from "assets/icons/plus.svg";
 
-// 產生購物車內已選購項目，若數量按到 0 會從購物車清單移除
-function CartItem({ id, name, img, price, quantity, increase1, increase2, decrease1, decrease2 }) {
+// 產生購物車內已選購項目，若數量按到 0 會從購物車清單移除，商品數量也不會變負數
+function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) {
   if (quantity > 0) {
     return (
       <div
@@ -25,16 +25,22 @@ function CartItem({ id, name, img, price, quantity, increase1, increase2, decrea
           </div>
           <div className={styles.productControlContainer}>
             <div className={styles.productControl}>
-              <img onClick={id === '1' ? decrease1 : decrease2}
+              <input
                 className={styles.productAction}
+                type="image"
                 src={minus}
                 alt="minus.svg"
+                value='decrease'
+                onClick={e => { handleChangeItemNumClick(id, e.target.value) }}
               />
               <span className={styles.productCount} >{quantity}</span>
-              <img onClick={id === '1' ? increase1 : increase2}
+              <input
                 className={styles.productAction}
+                type="image"
                 src={plus}
                 alt="plus.svg"
+                value='increase'
+                onClick={e => { handleChangeItemNumClick(id, e.target.value) }}
               />
             </div>
             <div className={styles.price} >共：${new Intl.NumberFormat().format(price * quantity)}</div>
@@ -46,11 +52,11 @@ function CartItem({ id, name, img, price, quantity, increase1, increase2, decrea
 }
 
 // 將購物車內所有已加入的商品清單匯出
-export default function CartItems({ data, increase1, increase2, decrease1, decrease2 }) {
+export default function CartItems({ data, handleChangeItemNumClick }) {
   return (
     <>
       {data.map(cartItem =>
-        <CartItem {...cartItem} key={cartItem.id} increase1={increase1} increase2={increase2} decrease1={decrease1} decrease2={decrease2} />
+        <CartItem {...cartItem} key={cartItem.id} handleChangeItemNumClick={handleChangeItemNumClick} />
       )}
     </>
   )

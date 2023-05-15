@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import styles from "./Cart.module.scss";
 import CartItems from "./CartItems.jsx";
 
@@ -21,58 +20,46 @@ const cartItemsData = [
   },
 ]
 
-// 計算用資料
+// 計算用資料，確保不會改到原資料
 const cartItemsDataForCal = cartItemsData.map(cartItemData => {
   return { ...cartItemData }
 })
 
-
-// 目前先做兩個 item 的計算邏輯，之後再想如何優化
 // 本單元題目尚未處理運費邏輯，故先以 0 計算
 export default function Cart() {
 
-  const [_quantity1, setQuantity1] = useState(cartItemsDataForCal[0].quantity)
-  const [_quantity2, setQuantity2] = useState(cartItemsDataForCal[1].quantity)
+  // 將購物籃商品清單最新狀態放這
+  const [cartItems, setCartItems] = useState(cartItemsDataForCal)
 
-  const totalPrice = cartItemsDataForCal[0].quantity * cartItemsDataForCal[0].price + cartItemsDataForCal[1].quantity * cartItemsDataForCal[1].price
+  // 運費
   const deliveryFee = 0
 
-  function handleIncreaseItem1Click() {
-    // 不太懂為何裡面直接寫 quantity1 + 1 會沒反應
-    setQuantity1(
-      cartItemsDataForCal[0].quantity = cartItemsDataForCal[0].quantity + 1
+  // 商品總價含運費
+  const cartItemsPrice = []
+  cartItems.forEach(e => cartItemsPrice.push(e.price * e.quantity))
+  const totalPrice = cartItemsPrice.reduce((current, next) => current + next, deliveryFee)
+
+  // 處理購物籃商品項目數量變化
+  function handleChangeItemNumClick(id, action) {
+    setCartItems(cartItems.map(cartItem => {
+      if (cartItem.id === id) {
+        if (action === 'increase') {
+          return { ...cartItem, quantity: cartItem.quantity + 1 }
+        } else {
+          return { ...cartItem, quantity: cartItem.quantity - 1 };
+        }
+      } else {
+        return cartItem;
+      }
+    })
     )
-  }
-
-  function handleIncreaseItem2Click() {
-    setQuantity2(
-      cartItemsDataForCal[1].quantity = cartItemsDataForCal[1].quantity + 1
-    )
-  }
-
-  function handleDecreaseItem1Click() {
-    // 商品數量不能有負數
-    if (cartItemsDataForCal[0].quantity > 0) {
-      setQuantity1(
-        cartItemsDataForCal[0].quantity = cartItemsDataForCal[0].quantity - 1
-      )
-    }
-  }
-
-  // 商品數量不能有負數
-  function handleDecreaseItem2Click() {
-    if (cartItemsDataForCal[1].quantity > 0) {
-      setQuantity2(
-        cartItemsDataForCal[1].quantity = cartItemsDataForCal[1].quantity - 1
-      )
-    }
   }
 
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
       <h3 className={styles.cartTitle}>購物籃</h3>
       <section className={`col col-12`} data-total-price={0}>
-        <CartItems data={cartItemsDataForCal} increase1={handleIncreaseItem1Click} increase2={handleIncreaseItem2Click} decrease1={handleDecreaseItem1Click} decrease2={handleDecreaseItem2Click} />
+        <CartItems data={cartItems} handleChangeItemNumClick={handleChangeItemNumClick} />
       </section>
       <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>
@@ -80,7 +67,7 @@ export default function Cart() {
       </section>
       <section className={`${styles.cartInfo} total col col-12`}>
         <div className={styles.text}>小計</div>
-        <div className={styles.price} >${new Intl.NumberFormat().format(totalPrice + deliveryFee)}</div>
+        <div className={styles.price} >${new Intl.NumberFormat().format(totalPrice)}</div>
       </section>
     </section>
   )
