@@ -30,8 +30,8 @@ function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) 
                 type="image"
                 src={minus}
                 alt="minus.svg"
-                value='decrease'
-                onClick={e => { handleChangeItemNumClick(id, e.target.value) }}
+                value={-1}
+                onClick={e => { handleChangeItemNumClick(id, Number(e.target.value)) }}
               />
               <span className={styles.productCount} >{quantity}</span>
               <input
@@ -39,8 +39,8 @@ function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) 
                 type="image"
                 src={plus}
                 alt="plus.svg"
-                value='increase'
-                onClick={e => { handleChangeItemNumClick(id, e.target.value) }}
+                value={1}
+                onClick={e => { handleChangeItemNumClick(id, Number(e.target.value)) }}
               />
             </div>
             <div className={styles.price} >共：${new Intl.NumberFormat().format(price * quantity)}</div>

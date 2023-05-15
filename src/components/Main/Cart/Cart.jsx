@@ -20,39 +20,24 @@ const cartItemsData = [
   },
 ]
 
-// 計算用資料，確保不會改到原資料
-const cartItemsDataForCal = cartItemsData.map(cartItemData => {
-  return { ...cartItemData }
-})
-
 // 本單元題目尚未處理運費邏輯，故先以 0 計算
 export default function Cart() {
 
   // 將購物籃商品清單最新狀態放這
-  const [cartItems, setCartItems] = useState(cartItemsDataForCal)
+  const [cartItems, setCartItems] = useState(cartItemsData)
 
   // 運費
   const deliveryFee = 0
-
   // 商品總價含運費
-  const cartItemsPrice = []
-  cartItems.forEach(e => cartItemsPrice.push(e.price * e.quantity))
-  const totalPrice = cartItemsPrice.reduce((current, next) => current + next, deliveryFee)
+  const totalPrice = cartItems.map(e => e.price * e.quantity).reduce((current, next) => current + next, deliveryFee)
 
   // 處理購物籃商品項目數量變化
-  function handleChangeItemNumClick(id, action) {
+  function handleChangeItemNumClick(id, amountChange) {
     setCartItems(cartItems.map(cartItem => {
       if (cartItem.id === id) {
-        if (action === 'increase') {
-          return { ...cartItem, quantity: cartItem.quantity + 1 }
-        } else {
-          return { ...cartItem, quantity: cartItem.quantity - 1 };
-        }
-      } else {
-        return cartItem;
-      }
-    })
-    )
+        return { ...cartItem, quantity: cartItem.quantity + amountChange }
+      } else { return cartItem }
+    }))
   }
 
   return (
