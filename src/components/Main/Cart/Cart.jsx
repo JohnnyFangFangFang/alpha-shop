@@ -29,7 +29,7 @@ export default function Cart() {
   // 運費
   const deliveryFee = 0
   // 商品總價含運費
-  const totalPrice = cartItems.map(e => e.price * e.quantity).reduce((current, next) => current + next, deliveryFee)
+  const totalPrice = cartItems.reduce((current, next) => current + next.price * next.quantity, deliveryFee)
 
   // 處理購物籃商品項目數量變化
   function handleChangeItemNumClick(id, amountChange) {
