@@ -1,27 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styles from "./Cart.module.scss";
 import CartItems from "./CartItems.jsx";
-
-// 測試用資料
-const cartItemsData = [
-  {
-    id: '1',
-    name: '貓咪罐罐',
-    img: 'https://picsum.photos/300/300?text=1',
-    price: 100,
-    quantity: 2,
-  },
-  {
-    id: '2',
-    name: '貓咪干干',
-    img: 'https://picsum.photos/300/300?text=2',
-    price: 200,
-    quantity: 1,
-  },
-]
+import { cartItemsDataInitial } from './CartContext.jsx'
 
 // 本單元題目尚未處理運費邏輯，故先以 0 計算
 export default function Cart() {
+
+  // 將購物藍測試資料從 CartContext 抓取
+  const cartItemsData = useContext(cartItemsDataInitial);
 
   // 將購物籃商品清單最新狀態放這
   const [cartItems, setCartItems] = useState(cartItemsData)
