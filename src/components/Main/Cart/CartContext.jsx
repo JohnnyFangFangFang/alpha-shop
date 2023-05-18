@@ -21,38 +21,31 @@ const dummyCartItemsData = [
 
 const CartContext = createContext('');
 
+// 本單元題目尚未處理運費邏輯，故先以 0 計算
 function CartProvider({ children }) {
 
-  // 購物車最新狀態
+  // 購物籃商品清單最新狀態
   const [cartItems, setCartItems] = useState(dummyCartItemsData)
-  const [cardInfo, setCardInfo] = useState({
-    cardHolderName: '',
-    cardNumber: '',
-    cardExpirationDate: '',
-    cardCVC: '',
-  });
 
-  // 獲取表單填寫的資料並更新 cardInfo
-  function handleChange(e) {
-    const { name, value } = e.target;
-    if (cardInfo.hasOwnProperty(name)) {
-      setCardInfo({
-        ...cardInfo,
-        [name]: value,
-      })
-    }
-  };
+  // 運費
+  const deliveryFee = 0
+  // 商品總價含運費
+  const totalPrice = cartItems.reduce((current, next) => current + next.price * next.quantity, deliveryFee)
 
-  // 在表單提交時印出 cardInfo
-  function handleSubmit() {
-    console.log(cardInfo)
-  };
+  // 處理購物籃商品項目數量變化
+  function handleChangeItemNumClick(id, amountChange) {
+    setCartItems(cartItems.map(cartItem => {
+      if (cartItem.id === id) {
+        return { ...cartItem, quantity: cartItem.quantity + amountChange }
+      } else { return cartItem }
+    }))
+  }
 
   return (
-    <CardInfoContext.Provider value={{ cardInfo, handleSubmit, handleChange }}>
+    <CartContext.Provider value={{ cartItems, deliveryFee, totalPrice, handleChangeItemNumClick }}>
       {children}
-    </CardInfoContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export { CardInfoContext, CardProvider }
+export { CartContext, CartProvider }

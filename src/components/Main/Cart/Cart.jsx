@@ -1,36 +1,16 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import styles from "./Cart.module.scss";
 import CartItems from "./CartItems.jsx";
-import { cartItemsDataInitial } from './CartContext.jsx'
+import { CartContext } from './CartContext.jsx'
 
-// 本單元題目尚未處理運費邏輯，故先以 0 計算
 export default function Cart() {
-
-  // 將購物藍測試資料從 CartContext 抓取
-  const cartItemsData = useContext(cartItemsDataInitial);
-
-  // 將購物籃商品清單最新狀態放這
-  const [cartItems, setCartItems] = useState(cartItemsData)
-
-  // 運費
-  const deliveryFee = 0
-  // 商品總價含運費
-  const totalPrice = cartItems.reduce((current, next) => current + next.price * next.quantity, deliveryFee)
-
-  // 處理購物籃商品項目數量變化
-  function handleChangeItemNumClick(id, amountChange) {
-    setCartItems(cartItems.map(cartItem => {
-      if (cartItem.id === id) {
-        return { ...cartItem, quantity: cartItem.quantity + amountChange }
-      } else { return cartItem }
-    }))
-  }
+  const { deliveryFee, totalPrice } = useContext(CartContext);
 
   return (
     <section className={`${styles.cartContainer} col col-lg-5 col-sm-12`}>
       <h3 className={styles.cartTitle}>購物籃</h3>
       <section className={`col col-12`} data-total-price={0}>
-        <CartItems data={cartItems} handleChangeItemNumClick={handleChangeItemNumClick} />
+        <CartItems />
       </section>
       <section className={`${styles.cartInfo} shipping col col-12`}>
         <div className={styles.text}>運費</div>

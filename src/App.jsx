@@ -5,6 +5,8 @@ import "styles/base.scss";
 import { useState } from 'react';
 // 引入要使用的信用卡 Context
 import { CardProvider } from './CardInfoContext.jsx';
+// // 引入要使用的購物籃 Context
+import { CartProvider } from 'components/Main/Cart/CartContext.jsx'
 
 // 引入元件
 import Main from "components/Main/Main.jsx";
@@ -32,9 +34,11 @@ function App() {
     <div className="App">
       <Main>
         <CardProvider>
-          <RegisterSection stepPhase={stepPhase} />
-          <Cart />
-          <ProgressControl handleClickNext={handleClickNext} handleClickPrevious={handleClickPrevious} stepPhase={stepPhase} />
+          <CartProvider>
+            <RegisterSection stepPhase={stepPhase} />
+            <Cart />
+            <ProgressControl handleClickNext={handleClickNext} handleClickPrevious={handleClickPrevious} stepPhase={stepPhase} />
+          </CartProvider>
         </CardProvider>
       </Main>
     </div>

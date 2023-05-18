@@ -1,11 +1,14 @@
+import { useContext } from 'react';
 import styles from "./CartItems.module.scss";
+import { CartContext } from './CartContext.jsx'
 
 // 引入 svg、圖片
 import minus from "assets/icons/minus.svg";
 import plus from "assets/icons/plus.svg";
 
 // 產生購物車內已選購項目，若數量按到 0 會從購物車清單移除，商品數量也不會變負數
-function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) {
+function CartItem({ id, name, img, price, quantity }) {
+  const { handleChangeItemNumClick } = useContext(CartContext);
   if (quantity > 0) {
     return (
       <div
@@ -53,11 +56,12 @@ function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) 
 }
 
 // 將購物車內所有已加入的商品清單匯出
-export default function CartItems({ data, handleChangeItemNumClick }) {
+export default function CartItems() {
+  const { cartItems } = useContext(CartContext);
   return (
     <>
-      {data.map(cartItem =>
-        <CartItem {...cartItem} key={cartItem.id} handleChangeItemNumClick={handleChangeItemNumClick} />
+      {cartItems.map(cartItem =>
+        <CartItem {...cartItem} key={cartItem.id} />
       )}
     </>
   )

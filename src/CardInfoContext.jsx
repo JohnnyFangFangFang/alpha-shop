@@ -7,6 +7,7 @@ const CardInfoContext = createContext('');
 
 function CardProvider({ children }) {
 
+  // 使用者信用卡最新資訊
   const [cardInfo, setCardInfo] = useState({
     cardHolderName: '',
     cardNumber: '',
@@ -25,9 +26,17 @@ function CardProvider({ children }) {
     }
   };
 
-  // 在表單提交時印出 cardInfo
-  function handleSubmit() {
-    console.log(cardInfo)
+  // 在表單提交時印出 cardInfo、totalPrice
+  function handleSubmit(totalPrice) {
+    console.log(
+      `
+持卡人姓名：${cardInfo.cardHolderName}
+卡號: ${cardInfo.cardNumber}
+有效期限: ${cardInfo.cardExpirationDate}
+CVC: ${cardInfo.cardCVC}
+總價: $${new Intl.NumberFormat().format(totalPrice)}
+`
+    )
   };
 
   return (
