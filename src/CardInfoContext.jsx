@@ -1,30 +1,12 @@
-// 將初始資料、購物車狀態、總價存在這
+// 送出後是否清空表單？
+// 將信用卡資訊存在這
 
 import { createContext, useState } from "react";
 
-const dummyCartItemsData = [
-  {
-    id: '1',
-    name: '貓咪罐罐',
-    img: 'https://picsum.photos/300/300?text=1',
-    price: 100,
-    quantity: 2,
-  },
-  {
-    id: '2',
-    name: '貓咪干干',
-    img: 'https://picsum.photos/300/300?text=2',
-    price: 200,
-    quantity: 1,
-  },
-]
+const CardInfoContext = createContext('');
 
-const CartContext = createContext('');
+function CardProvider({ children }) {
 
-function CartProvider({ children }) {
-
-  // 購物車最新狀態
-  const [cartItems, setCartItems] = useState(dummyCartItemsData)
   const [cardInfo, setCardInfo] = useState({
     cardHolderName: '',
     cardNumber: '',

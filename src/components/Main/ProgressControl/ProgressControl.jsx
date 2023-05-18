@@ -1,6 +1,10 @@
 import styles from "./ProgressControl.module.scss";
 import rightArrow from "assets/icons/right-arrow.svg";
 import leftArrow from "assets/icons/left-arrow.svg";
+// 引入信用卡資訊 Context
+import { useContext } from "react";
+import { CardInfoContext } from "CardInfoContext.jsx";
+
 
 // 上一步按鈕
 function PreviousStep({ handleClickPrevious }) {
@@ -32,6 +36,9 @@ function NextStep({ handleClickNext }) {
 
 // 已全數完成 3 個步驟的畫面切換
 export default function ProgressControl({ handleClickPrevious, handleClickNext, stepPhase }) {
+
+  const { handleSubmit } = useContext(CardInfoContext);
+
   return (
     <section className={`${styles.progressControlContainer} col col-lg-6 col-sm-12`}>
 
@@ -47,7 +54,7 @@ export default function ProgressControl({ handleClickPrevious, handleClickNext, 
 
       {stepPhase === 3 && <section className={`${styles.buttonGroup} col col-12`} data-phase="credit-card">
         <PreviousStep handleClickPrevious={handleClickPrevious} />
-        <button className={`${styles.next} cursorPoint`}>確認下單</button>
+        <button className={`${styles.next} cursorPoint`} onClick={handleSubmit}>確認下單</button>
       </section>}
 
     </section>

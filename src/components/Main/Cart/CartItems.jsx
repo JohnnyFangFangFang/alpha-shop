@@ -43,7 +43,8 @@ function CartItem({ id, name, img, price, quantity, handleChangeItemNumClick }) 
                 onClick={e => { handleChangeItemNumClick(id, Number(e.target.value)) }}
               />
             </div>
-            <div className={styles.price} >共：${new Intl.NumberFormat().format(price * quantity)}</div>
+            {/* 為了刻意練習多做的，暫不顯示 */}
+            {/* <div className={styles.price} >共：${new Intl.NumberFormat().format(price * quantity)}</div> */}
           </div>
         </div>
       </div>

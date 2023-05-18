@@ -1,9 +1,10 @@
 // 引入基本 scss 設定
 import "styles/reset.scss";
 import "styles/base.scss";
-
 // 引入 useState
 import { useState } from 'react';
+// 引入要使用的信用卡 Context
+import { CardProvider } from './CardInfoContext.jsx';
 
 // 引入元件
 import Main from "components/Main/Main.jsx";
@@ -30,9 +31,11 @@ function App() {
   return (
     <div className="App">
       <Main>
-        <RegisterSection stepPhase={stepPhase} />
-        <Cart />
-        <ProgressControl handleClickNext={handleClickNext} handleClickPrevious={handleClickPrevious} stepPhase={stepPhase} />
+        <CardProvider>
+          <RegisterSection stepPhase={stepPhase} />
+          <Cart />
+          <ProgressControl handleClickNext={handleClickNext} handleClickPrevious={handleClickPrevious} stepPhase={stepPhase} />
+        </CardProvider>
       </Main>
     </div>
   );
