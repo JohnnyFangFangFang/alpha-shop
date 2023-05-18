@@ -1,3 +1,5 @@
+$screen-break-point: 749.5px;
+
 h3.formTitle {
   display: flex;
   flex: 0 0 100%;
@@ -7,19 +9,80 @@ h3.formTitle {
 }
 
 section.formBody {
+  // border: 3px solid green;
+
   .col {
     justify-content: space-between;
   }
 
   .inputGroup {
+    // border: 3px solid red;
     margin-top: 24px;
+    margin-right:10px;
 
     .inputLabel {
+      // border: 3px solid blue;
       font-weight: bold;
       font-size: 12px;
       line-height: 16px;
       color: var(--input-label);
       margin-bottom: 8px;
+    }
+
+    .selectContainer {
+      position: relative;
+      padding-right: 6px;
+      text-align: center;
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        z-index: -2;
+        pointer-events: none;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: var(--select-arrow) transparent transparent transparent;
+        content: "";
+      }
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      font-weight: 400;
+      font-size: 12px;
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 16px;
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      background-color: transparent;
+    }
+
+    input {
+      color: var(--input-text);
+    }
+
+    select {
+      color: var(--select-true);
+      background-color: transparent;
+
+      &:required:invalid {
+        color: var(--select-false);
+      }
+
+      cursor: pointer;
+      -webkit-appearance: none;
+
+      option {
+        &[value=""][disabled] {
+          display: none;
+        }
+
+        color: var(--select-true);
+      }
     }
   }
 
@@ -102,9 +165,3 @@ section.formBody {
     }
   }
 }
-
-// 想先讓 step3 隱藏但無法作用
-// form.step3 {
-//   border: 3px solid green;
-//   display: none;
-// }

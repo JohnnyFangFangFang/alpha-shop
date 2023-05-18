@@ -7,13 +7,16 @@ h3.formTitle {
 }
 
 section.formBody {
+  // border: 1px solid green;
+
   .col {
     justify-content: space-between;
   }
 
   .inputGroup {
+    // border: 1px solid red;
     margin-top: 24px;
-    margin-right: 24px;
+    margin-right: 10px;
 
     .inputLabel {
       font-weight: bold;

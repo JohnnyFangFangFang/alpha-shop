@@ -15,7 +15,7 @@ function CreditCardInfo({ class2, class3, infoName, nameContent, placeholder }) 
 
 export default function Step3() {
   return (
-    <form className={`${styles.step3} col col-12`} data-phase="credit-card">
+    <form className='col col-12' data-phase="credit-card">
       <h3 className={styles.formTitle}>付款資訊</h3>
       <section className={`${styles.formBody} col col-12`}>
         <div className="col col-12">
