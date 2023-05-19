@@ -5,7 +5,7 @@ import pgComplete from "assets/icons/pg-complete.svg";
 // 因為要讓 styles 能接收變數，所以用「[]」取值而非「.」
 function StepProgressNotice({ dataPhase, imgDisplay, textClass, text, labelClass, label }) {
   return (
-    <span className={styles.progressGroup} dataPhase={dataPhase}>
+    <span className={styles.progressGroup} data-phase={dataPhase}>
       <span className={styles.progressIcon}>
         {imgDisplay ? <img className={`${styles.icon} cursorPoint`} src={pgComplete} alt="pg-complete.svg" /> : <span className={styles[textClass]}>{text}</span>}
       </span>

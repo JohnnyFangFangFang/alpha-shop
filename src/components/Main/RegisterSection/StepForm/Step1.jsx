@@ -46,7 +46,7 @@ function CityOptions() {
   return (
     <>
       {cities.map(city =>
-        <option value={city.value}>{city.text}</option>
+        <option key={city.value} value={city.value}>{city.text}</option>
       )}
     </>
   )
@@ -61,8 +61,8 @@ export default function Step1() {
           <div className={`${styles.inputGroup} input-w-lg-2 input-w-sm-s1`}>
             <div className={styles.inputLabel}>稱謂</div>
             <div className={styles.selectContainer}>
-              <select>
-                <option value="mr" selected="">
+              <select defaultValue="mr">
+                <option value="mr">
                   先生
                 </option>
                 <option value="ms">女士</option>
